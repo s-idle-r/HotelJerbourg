@@ -15,5 +15,8 @@ namespace HotelJerbourg.Models
         {
 
         }
+
+        public virtual Room Room { get; set; }
+        public virtual Client Client { get; set; }
     }
 }

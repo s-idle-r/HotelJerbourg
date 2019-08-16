@@ -13,7 +13,11 @@ namespace HotelJerbourg.Models
 
         public Client()
         {
-
+            Reservations = new HashSet<Reservation>();
+            Bills = new HashSet<Bill>();
         }
+
+        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
     }
 }

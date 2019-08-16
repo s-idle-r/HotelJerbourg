@@ -12,7 +12,9 @@ namespace HotelJerbourg.Models
 
         public RoomCategory()
         {
-
+            Rooms = new HashSet<Room>();
         }
+
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }
