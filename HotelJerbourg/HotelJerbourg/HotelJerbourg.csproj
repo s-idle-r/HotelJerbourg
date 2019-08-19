@@ -157,6 +157,7 @@
     <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RoomCategoriesController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
+    <Compile Include="DAL\HotelContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
