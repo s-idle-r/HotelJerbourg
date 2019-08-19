@@ -17,6 +17,7 @@ namespace HotelJerbourg.Models
             Reservations = new HashSet<Reservation>();
         }
 
+        public virtual Hotel Hotel { get; set; }
         public virtual RoomCategory RoomCategories { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
     }

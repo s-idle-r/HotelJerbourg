@@ -10,6 +10,7 @@ namespace HotelJerbourg.Models
         public int ReservationID { get; set; }
         public int RoomFK { get; set; }
         public int ClientFK { get; set; }
+        public DateTime Date { get; set; }
 
         public Reservation()
         {
