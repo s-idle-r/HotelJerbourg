@@ -10,6 +10,11 @@ namespace HotelJerbourg.DAL
 {
     public class HotelContext : DbContext
     {
+        public HotelContext() : base("HotelContext")
+        {
+
+        }
+
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomCategory> RoomCategories { get; set; }
@@ -20,6 +25,7 @@ namespace HotelJerbourg.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Room>().
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 

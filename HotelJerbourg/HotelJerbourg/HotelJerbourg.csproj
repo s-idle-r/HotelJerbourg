@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201908191729078_addReservationsDate.Designer.cs">
       <DependentUpon>201908191729078_addReservationsDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908192108181_AddSeedMethod.cs" />
+    <Compile Include="Migrations\201908192108181_AddSeedMethod.Designer.cs">
+      <DependentUpon>201908192108181_AddSeedMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Client.cs" />
@@ -301,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908191729078_addReservationsDate.resx">
       <DependentUpon>201908191729078_addReservationsDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908192108181_AddSeedMethod.resx">
+      <DependentUpon>201908192108181_AddSeedMethod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
