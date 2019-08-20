@@ -7,10 +7,11 @@ using HotelJerbourg.Models;
 
 namespace HotelJerbourg.DAL
 {
-    public class ReservationDatabaseInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<HotelContext>
+    public class HotelDBInitializer : DropCreateDatabaseIfModelChanges<HotelContext>
     {
         protected override void Seed(HotelContext context)
         {
+            Console.WriteLine("Seed-Method startet!!");
             var hotel = new List<Hotel>
             {
                 new Hotel{Name="Hotel Jerbourg",Address="Rue de Bretagne 11"}

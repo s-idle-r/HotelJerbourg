@@ -5,13 +5,13 @@ namespace HotelJerbourg.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<HotelJerbourg.DAL.HotelContext>
+    internal sealed class Configuration_save : DbMigrationsConfiguration<HotelJerbourg.DAL.HotelContext>
     {
-        public Configuration()
+        public Configuration_save()
         {
             AutomaticMigrationsEnabled = false;
             //ContextKey = "HotelJerbourg.Models.HotelJerbourgContext";
-            //ContextKey = "HotelJerbourg.DAL.HotelContext";
+            ContextKey = "HotelJerbourg.DAL.HotelContext";
         }
 
         protected override void Seed(HotelJerbourg.DAL.HotelContext context)

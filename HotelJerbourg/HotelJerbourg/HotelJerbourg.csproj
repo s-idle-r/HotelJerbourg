@@ -158,28 +158,20 @@
     <Compile Include="Controllers\RoomCategoriesController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="DAL\HotelContext.cs" />
-    <Compile Include="DAL\ReservationDatabaseInitializer.cs" />
+    <Compile Include="DAL\HotelDBInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908191709423_InitialCreate.cs" />
-    <Compile Include="Migrations\201908191709423_InitialCreate.Designer.cs">
-      <DependentUpon>201908191709423_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908191729078_addReservationsDate.cs" />
-    <Compile Include="Migrations\201908191729078_addReservationsDate.Designer.cs">
-      <DependentUpon>201908191729078_addReservationsDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908192108181_AddSeedMethod.cs" />
-    <Compile Include="Migrations\201908192108181_AddSeedMethod.Designer.cs">
-      <DependentUpon>201908192108181_AddSeedMethod.cs</DependentUpon>
+    <Compile Include="Migrations\201908202114230_Initial.cs" />
+    <Compile Include="Migrations\201908202114230_Initial.Designer.cs">
+      <DependentUpon>201908202114230_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\Hotel.cs" />
-    <Compile Include="Models\HotelJerbourgContext.cs" />
+    <Compile Include="DAL\HotelJerbourgContext.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomCategory.cs" />
@@ -300,14 +292,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908191709423_InitialCreate.resx">
-      <DependentUpon>201908191709423_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908191729078_addReservationsDate.resx">
-      <DependentUpon>201908191729078_addReservationsDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908192108181_AddSeedMethod.resx">
-      <DependentUpon>201908192108181_AddSeedMethod.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908202114230_Initial.resx">
+      <DependentUpon>201908202114230_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

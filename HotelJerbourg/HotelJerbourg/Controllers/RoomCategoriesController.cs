@@ -7,12 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HotelJerbourg.Models;
+using HotelJerbourg.DAL;
 
 namespace HotelJerbourg.Controllers
 {
     public class RoomCategoriesController : Controller
     {
-        private HotelJerbourgContext db = new HotelJerbourgContext();
+        private HotelContext db = new HotelContext();
 
         // GET: RoomCategories
         public ActionResult Index()

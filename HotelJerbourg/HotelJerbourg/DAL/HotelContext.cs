@@ -12,7 +12,7 @@ namespace HotelJerbourg.DAL
     {
         public HotelContext() : base("HotelContext")
         {
-
+            Database.SetInitializer(new HotelDBInitializer());
         }
 
         public DbSet<Hotel> Hotels { get; set; }
@@ -22,20 +22,20 @@ namespace HotelJerbourg.DAL
         public DbSet<Bill> Bills { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //modelBuilder.Entity<Room>().
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    //modelBuilder.Entity<Room>().
+        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        //    //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            //modelBuilder.Entity<Course>()
-            //    .HasMany(c => c.Instructors).WithMany(i => i.Courses)
-            //    .Map(t => t.MapLeftKey("CourseID")
-            //        .MapRightKey("InstructorID")
-            //        .ToTable("CourseInstructor"));
+        //    //modelBuilder.Entity<Course>()
+        //    //    .HasMany(c => c.Instructors).WithMany(i => i.Courses)
+        //    //    .Map(t => t.MapLeftKey("CourseID")
+        //    //        .MapRightKey("InstructorID")
+        //    //        .ToTable("CourseInstructor"));
 
-            //modelBuilder.Entity<Department>().MapToStoredProcedures();
-        }
+        //    //modelBuilder.Entity<Department>().MapToStoredProcedures();
+        //}
     }
 }
