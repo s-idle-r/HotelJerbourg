@@ -7,7 +7,7 @@ using HotelJerbourg.Models;
 
 namespace HotelJerbourg.DAL
 {
-    public class ReservationDatabaseInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<HotelContext>
+    public class HotelDBInitializer : DropCreateDatabaseIfModelChanges<HotelContext>
     {
         protected override void Seed(HotelContext context)
         {

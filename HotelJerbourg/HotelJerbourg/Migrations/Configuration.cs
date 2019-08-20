@@ -4,6 +4,7 @@ namespace HotelJerbourg.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using HotelJerbourg.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<HotelJerbourg.Models.HotelJerbourgContext>
     {
