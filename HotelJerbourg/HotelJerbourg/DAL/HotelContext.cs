@@ -10,7 +10,7 @@ namespace HotelJerbourg.DAL
 {
     public class HotelContext : DbContext
     {
-        public HotelContext() : base("HotelContext")
+        public HotelContext() : base("HotelJerbourg")
         {
             Database.SetInitializer(new HotelDBInitializer());
         }

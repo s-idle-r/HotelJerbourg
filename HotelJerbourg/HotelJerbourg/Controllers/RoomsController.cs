@@ -14,11 +14,17 @@ namespace HotelJerbourg.Controllers
     public class RoomsController : Controller
     {
         private HotelContext db = new HotelContext();
+        private ModelsVM viewmodel = new ModelsVM();
 
         // GET: Rooms
         public ActionResult Index()
         {
-            return View(db.Rooms.ToList());
+            viewmodel.RoomList = db.Rooms.ToList();
+            viewmodel.RoomCategoryList = db.RoomCategories.ToList();
+
+            //var room = db.Rooms.Include(s => s.RoomCategories);
+            return View(viewmodel);
+            //return View(db.Rooms.ToList());
         }
 
         // GET: Rooms/Details/5

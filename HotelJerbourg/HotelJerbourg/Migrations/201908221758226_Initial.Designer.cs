@@ -13,7 +13,7 @@ namespace HotelJerbourg.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201908202114230_Initial"; }
+            get { return "201908221758226_Initial"; }
         }
         
         string IMigrationMetadata.Source

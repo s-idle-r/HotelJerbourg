@@ -158,20 +158,27 @@
     <Compile Include="Controllers\RoomCategoriesController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="DAL\HotelContext.cs" />
-    <Compile Include="DAL\HotelDBInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908202114230_Initial.cs" />
-    <Compile Include="Migrations\201908202114230_Initial.Designer.cs">
-      <DependentUpon>201908202114230_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201908221758226_Initial.cs" />
+    <Compile Include="Migrations\201908221758226_Initial.Designer.cs">
+      <DependentUpon>201908221758226_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201616264_testingForSeedingMethod.cs" />
+    <Compile Include="Migrations\201908201616264_testingForSeedingMethod.Designer.cs">
+      <DependentUpon>201908201616264_testingForSeedingMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201619391_testingForSeedingMethod2.cs" />
+    <Compile Include="Migrations\201908201619391_testingForSeedingMethod2.Designer.cs">
+      <DependentUpon>201908201619391_testingForSeedingMethod2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\Hotel.cs" />
-    <Compile Include="DAL\HotelJerbourgContext.cs" />
+    <Compile Include="Models\ModelsVM.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomCategory.cs" />
@@ -234,7 +241,9 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -292,8 +301,14 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908202114230_Initial.resx">
-      <DependentUpon>201908202114230_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908221758226_Initial.resx">
+      <DependentUpon>201908221758226_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201616264_testingForSeedingMethod.resx">
+      <DependentUpon>201908201616264_testingForSeedingMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201619391_testingForSeedingMethod2.resx">
+      <DependentUpon>201908201619391_testingForSeedingMethod2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
