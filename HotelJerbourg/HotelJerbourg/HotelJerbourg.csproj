@@ -161,9 +161,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908221758226_Initial.cs" />
-    <Compile Include="Migrations\201908221758226_Initial.Designer.cs">
-      <DependentUpon>201908221758226_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201908262226336_Initial.cs" />
+    <Compile Include="Migrations\201908262226336_Initial.Designer.cs">
+      <DependentUpon>201908262226336_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bill.cs" />
@@ -269,16 +269,16 @@
     <Content Include="Views\Clients\Details.cshtml" />
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
-    <Content Include="Views\Rooms\Create.cshtml" />
-    <Content Include="Views\Rooms\Delete.cshtml" />
-    <Content Include="Views\Rooms\Details.cshtml" />
-    <Content Include="Views\Rooms\Edit.cshtml" />
-    <Content Include="Views\Rooms\Index.cshtml" />
     <Content Include="Views\RoomCategories\Create.cshtml" />
     <Content Include="Views\RoomCategories\Delete.cshtml" />
     <Content Include="Views\RoomCategories\Details.cshtml" />
     <Content Include="Views\RoomCategories\Edit.cshtml" />
     <Content Include="Views\RoomCategories\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,8 +293,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908221758226_Initial.resx">
-      <DependentUpon>201908221758226_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908262226336_Initial.resx">
+      <DependentUpon>201908262226336_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,7 @@ namespace HotelJerbourg.Models
         public int HotelID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public int RoomFK { get; set; }
+        //public int RoomFK { get; set; }
 
         public Hotel()
         {

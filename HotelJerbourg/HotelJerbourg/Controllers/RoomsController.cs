@@ -6,27 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using HotelJerbourg.Models;
 using HotelJerbourg.DAL;
+using HotelJerbourg.Models;
 
 namespace HotelJerbourg.Controllers
 {
     public class RoomsController : Controller
     {
         private HotelContext db = new HotelContext();
-        private ModelsVM viewmodel = new ModelsVM();
 
         // GET: Rooms
         public ActionResult Index()
         {
-            //viewmodel.RoomList = db.Rooms.ToList();
-            //viewmodel.RoomCategoryList = db.RoomCategories.ToList();
-            //return View(viewmodel);
-
-            var room = db.Rooms.Include(s => s.RoomCategories).ToList();
-            RoomCategory roomCategory = db.RoomCategories.Find(db.Rooms.Include(s => s.RoomCategories))
-            return View(room);
-            //return View(db.Rooms.ToList());
+            return View(db.Rooms.ToList());
         }
 
         // GET: Rooms/Details/5
@@ -47,6 +39,7 @@ namespace HotelJerbourg.Controllers
         // GET: Rooms/Create
         public ActionResult Create()
         {
+            ViewBag.
             return View();
         }
 
@@ -55,7 +48,7 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoomID,Number,Availability,RoomCategoryFK")] Room room)
+        public ActionResult Create([Bind(Include = "RoomID,Number,Availability")] Room room)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +80,7 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomID,Number,Availability,RoomCategoryFK")] Room room)
+        public ActionResult Edit([Bind(Include = "RoomID,Number,Availability")] Room room)
         {
             if (ModelState.IsValid)
             {

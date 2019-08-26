@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<HotelJerbourg.Models.Room>*@
-@model HotelJerbourg.Models.ModelsVM
+﻿@model IEnumerable<HotelJerbourg.Models.Room>
 
 @{
     ViewBag.Title = "Index";
@@ -13,18 +12,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Room.Number)
+            @Html.DisplayNameFor(model => model.Number)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Room.Availability)
+            @Html.DisplayNameFor(model => model.Availability)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RoomCategory.Category)
+            @Html.DisplayNameFor(model => model.RoomCategories.Category)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model.RoomList) {
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Number)
@@ -36,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.RoomCategories.Category)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RoomID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RoomID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RoomID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.RoomID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.RoomID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.RoomID })
         </td>
     </tr>
 }

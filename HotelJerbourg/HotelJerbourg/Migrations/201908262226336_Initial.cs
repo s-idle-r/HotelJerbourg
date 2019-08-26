@@ -8,7 +8,7 @@ namespace HotelJerbourg.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Bills",
+                "dbo.Bill",
                 c => new
                     {
                         BillID = c.Int(nullable: false, identity: true),
@@ -17,11 +17,11 @@ namespace HotelJerbourg.Migrations
                         Client_ClientID = c.Int(),
                     })
                 .PrimaryKey(t => t.BillID)
-                .ForeignKey("dbo.Clients", t => t.Client_ClientID)
+                .ForeignKey("dbo.Client", t => t.Client_ClientID)
                 .Index(t => t.Client_ClientID);
             
             CreateTable(
-                "dbo.Clients",
+                "dbo.Client",
                 c => new
                     {
                         ClientID = c.Int(nullable: false, identity: true),
@@ -32,7 +32,7 @@ namespace HotelJerbourg.Migrations
                 .PrimaryKey(t => t.ClientID);
             
             CreateTable(
-                "dbo.Reservations",
+                "dbo.Reservation",
                 c => new
                     {
                         ReservationID = c.Int(nullable: false, identity: true),
@@ -43,41 +43,39 @@ namespace HotelJerbourg.Migrations
                         Room_RoomID = c.Int(),
                     })
                 .PrimaryKey(t => t.ReservationID)
-                .ForeignKey("dbo.Clients", t => t.Client_ClientID)
-                .ForeignKey("dbo.Rooms", t => t.Room_RoomID)
+                .ForeignKey("dbo.Client", t => t.Client_ClientID)
+                .ForeignKey("dbo.Room", t => t.Room_RoomID)
                 .Index(t => t.Client_ClientID)
                 .Index(t => t.Room_RoomID);
             
             CreateTable(
-                "dbo.Rooms",
+                "dbo.Room",
                 c => new
                     {
                         RoomID = c.Int(nullable: false, identity: true),
                         Number = c.Int(nullable: false),
                         Availability = c.Boolean(nullable: false),
-                        RoomCategoryFK = c.Int(nullable: false),
-                        Hotel_HotelID = c.Int(),
-                        RoomCategories_RoomCategoryID = c.Int(),
+                        HotelFK = c.Int(),
+                        RoomCategoryFK = c.Int(),
                     })
                 .PrimaryKey(t => t.RoomID)
-                .ForeignKey("dbo.Hotels", t => t.Hotel_HotelID)
-                .ForeignKey("dbo.RoomCategories", t => t.RoomCategories_RoomCategoryID)
-                .Index(t => t.Hotel_HotelID)
-                .Index(t => t.RoomCategories_RoomCategoryID);
+                .ForeignKey("dbo.Hotel", t => t.HotelFK)
+                .ForeignKey("dbo.RoomCategory", t => t.RoomCategoryFK)
+                .Index(t => t.HotelFK)
+                .Index(t => t.RoomCategoryFK);
             
             CreateTable(
-                "dbo.Hotels",
+                "dbo.Hotel",
                 c => new
                     {
                         HotelID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Address = c.String(),
-                        RoomFK = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.HotelID);
             
             CreateTable(
-                "dbo.RoomCategories",
+                "dbo.RoomCategory",
                 c => new
                     {
                         RoomCategoryID = c.Int(nullable: false, identity: true),
@@ -89,22 +87,22 @@ namespace HotelJerbourg.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Rooms", "RoomCategories_RoomCategoryID", "dbo.RoomCategories");
-            DropForeignKey("dbo.Reservations", "Room_RoomID", "dbo.Rooms");
-            DropForeignKey("dbo.Rooms", "Hotel_HotelID", "dbo.Hotels");
-            DropForeignKey("dbo.Reservations", "Client_ClientID", "dbo.Clients");
-            DropForeignKey("dbo.Bills", "Client_ClientID", "dbo.Clients");
-            DropIndex("dbo.Rooms", new[] { "RoomCategories_RoomCategoryID" });
-            DropIndex("dbo.Rooms", new[] { "Hotel_HotelID" });
-            DropIndex("dbo.Reservations", new[] { "Room_RoomID" });
-            DropIndex("dbo.Reservations", new[] { "Client_ClientID" });
-            DropIndex("dbo.Bills", new[] { "Client_ClientID" });
-            DropTable("dbo.RoomCategories");
-            DropTable("dbo.Hotels");
-            DropTable("dbo.Rooms");
-            DropTable("dbo.Reservations");
-            DropTable("dbo.Clients");
-            DropTable("dbo.Bills");
+            DropForeignKey("dbo.Room", "RoomCategoryFK", "dbo.RoomCategory");
+            DropForeignKey("dbo.Reservation", "Room_RoomID", "dbo.Room");
+            DropForeignKey("dbo.Room", "HotelFK", "dbo.Hotel");
+            DropForeignKey("dbo.Reservation", "Client_ClientID", "dbo.Client");
+            DropForeignKey("dbo.Bill", "Client_ClientID", "dbo.Client");
+            DropIndex("dbo.Room", new[] { "RoomCategoryFK" });
+            DropIndex("dbo.Room", new[] { "HotelFK" });
+            DropIndex("dbo.Reservation", new[] { "Room_RoomID" });
+            DropIndex("dbo.Reservation", new[] { "Client_ClientID" });
+            DropIndex("dbo.Bill", new[] { "Client_ClientID" });
+            DropTable("dbo.RoomCategory");
+            DropTable("dbo.Hotel");
+            DropTable("dbo.Room");
+            DropTable("dbo.Reservation");
+            DropTable("dbo.Client");
+            DropTable("dbo.Bill");
         }
     }
 }

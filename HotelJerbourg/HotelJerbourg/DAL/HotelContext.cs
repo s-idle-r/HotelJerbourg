@@ -22,20 +22,27 @@ namespace HotelJerbourg.DAL
         public DbSet<Bill> Bills { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    //modelBuilder.Entity<Room>().
-        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Room>()
+                .HasOptional(s => s.RoomCategories).WithMany(s => s.Rooms)
+                .Map(t => t.MapKey("RoomCategoryFK"));
 
-        //    //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Room>()
+                .HasOptional(s => s.Hotel).WithMany(s => s.Rooms)
+                .Map(t => t.MapKey("HotelFK"));
 
-        //    //modelBuilder.Entity<Course>()
-        //    //    .HasMany(c => c.Instructors).WithMany(i => i.Courses)
-        //    //    .Map(t => t.MapLeftKey("CourseID")
-        //    //        .MapRightKey("InstructorID")
-        //    //        .ToTable("CourseInstructor"));
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-        //    //modelBuilder.Entity<Department>().MapToStoredProcedures();
-        //}
+            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //modelBuilder.Entity<Course>()
+            //    .HasMany(c => c.Instructors).WithMany(i => i.Courses)
+            //    .Map(t => t.MapLeftKey("CourseID")
+            //        .MapRightKey("InstructorID")
+            //        .ToTable("CourseInstructor"));
+
+            //modelBuilder.Entity<Department>().MapToStoredProcedures();
+        }
     }
 }
