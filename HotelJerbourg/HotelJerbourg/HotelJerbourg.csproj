@@ -165,14 +165,6 @@
     <Compile Include="Migrations\201908221758226_Initial.Designer.cs">
       <DependentUpon>201908221758226_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908201616264_testingForSeedingMethod.cs" />
-    <Compile Include="Migrations\201908201616264_testingForSeedingMethod.Designer.cs">
-      <DependentUpon>201908201616264_testingForSeedingMethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908201619391_testingForSeedingMethod2.cs" />
-    <Compile Include="Migrations\201908201619391_testingForSeedingMethod2.Designer.cs">
-      <DependentUpon>201908201619391_testingForSeedingMethod2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Client.cs" />
@@ -303,12 +295,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908221758226_Initial.resx">
       <DependentUpon>201908221758226_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908201616264_testingForSeedingMethod.resx">
-      <DependentUpon>201908201616264_testingForSeedingMethod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908201619391_testingForSeedingMethod2.resx">
-      <DependentUpon>201908201619391_testingForSeedingMethod2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

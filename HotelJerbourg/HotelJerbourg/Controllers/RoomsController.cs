@@ -19,11 +19,13 @@ namespace HotelJerbourg.Controllers
         // GET: Rooms
         public ActionResult Index()
         {
-            viewmodel.RoomList = db.Rooms.ToList();
-            viewmodel.RoomCategoryList = db.RoomCategories.ToList();
+            //viewmodel.RoomList = db.Rooms.ToList();
+            //viewmodel.RoomCategoryList = db.RoomCategories.ToList();
+            //return View(viewmodel);
 
-            //var room = db.Rooms.Include(s => s.RoomCategories);
-            return View(viewmodel);
+            var room = db.Rooms.Include(s => s.RoomCategories).ToList();
+            RoomCategory roomCategory = db.RoomCategories.Find(db.Rooms.Include(s => s.RoomCategories))
+            return View(room);
             //return View(db.Rooms.ToList());
         }
 
