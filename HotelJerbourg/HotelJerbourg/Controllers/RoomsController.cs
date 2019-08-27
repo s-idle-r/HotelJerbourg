@@ -47,20 +47,17 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoomID,Number,Availability,RoomCategoryFK")] Room room, RoomCategory roomCategory, Hotel hotel)
+        public ActionResult Create([Bind(Include = "RoomID,Number,Availability,RoomCategoryFK")] Room room)
         {
             if (ModelState.IsValid)
             {
-                room.RoomCategoryFK = 1;
-                room.HotelFK = 1;
-                room.Hotel = db.Hotels.Find(room.HotelFK);
+                room.Hotel = db.Hotels.Find(1);
                 room.RoomCategories = db.RoomCategories.Find(room.RoomCategoryFK);
 
                 db.Rooms.Add(room);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(room);
         }
 
@@ -84,10 +81,13 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomID,Number,Availability")] Room room)
+        public ActionResult Edit([Bind(Include = "RoomID,Number,Availability,RoomCategoryFK")] Room room)
         {
             if (ModelState.IsValid)
             {
+                room.Hotel = db.Hotels.Find(1);
+                room.RoomCategories = db.RoomCategories.Find(room.RoomCategoryFK);
+                
                 db.Entry(room).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

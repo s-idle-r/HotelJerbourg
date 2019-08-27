@@ -14,8 +14,6 @@ namespace HotelJerbourg.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            //ContextKey = "HotelJerbourg.Models.HotelJerbourgContext";
-            //ContextKey = "HotelJerbourg.DAL.HotelContext";
         }
 
         protected override void Seed(HotelJerbourg.DAL.HotelContext context)
@@ -51,87 +49,96 @@ namespace HotelJerbourg.Migrations
                     Number = 001,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 1),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 002,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 1),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 003,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 1),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 004,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 2).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 2),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 005,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 2).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 2),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 101,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 1),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 102,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 2).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 2),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 103,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 1),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 104,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 3).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 3),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
                 },
                 new Room
                 {
                     Number = 105,
                     Availability = true,
                     RoomCategoryFK = category.Single(s => s.RoomCategoryID == 3).RoomCategoryID,
-                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
-                },
-                //new Room{Number=001,Availability=true,RoomCategoryFK=1},
-                //new Room{Number=002,Availability=true,RoomCategoryFK=1},
-                //new Room{Number=003,Availability=true,RoomCategoryFK=1},
-                //new Room{Number=004,Availability=true,RoomCategoryFK=2},
-                //new Room{Number=005,Availability=true,RoomCategoryFK=2},
-                //new Room{Number=101,Availability=true,RoomCategoryFK=1},
-                //new Room{Number=102,Availability=true,RoomCategoryFK=2},
-                //new Room{Number=103,Availability=true,RoomCategoryFK=1},
-                //new Room{Number=104,Availability=true,RoomCategoryFK=3},
-                //new Room{Number=105,Availability=true,RoomCategoryFK=3}
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID,
+                    RoomCategories = category.Single(s => s.RoomCategoryID == 3),
+                    Hotel =  hotel.Single(s => s.HotelID == 1)
+                }
             };
             rooms.ForEach(s => context.Rooms.AddOrUpdate(p => p.Number, s));
             context.SaveChanges();
 
-
-
+            
             var clients = new List<Client>
             {
                 new Client{Surname="Tobias",LastName="Tanner",Address="Tannenweg 3"},
@@ -143,42 +150,37 @@ namespace HotelJerbourg.Migrations
             };
             clients.ForEach(s => context.Clients.AddOrUpdate(p => p.LastName, s));
             context.SaveChanges();
+            
 
-            var reservations = new List<Reservation>
-            {
-                //new Reservation{ClientFK=1,RoomFK=1,Date=DateTime.Parse("2019-08-30")},
-                //new Reservation{ClientFK=2,RoomFK=5,Date=DateTime.Parse("2019-08-28")}
-
+            context.Reservations.AddOrUpdate(s => s.ReservationID,
                 new Reservation
                 {
+                    ReservationID = 1,
                     ClientFK = clients.Single(s => s.LastName == "Tanner").ClientID,
                     RoomFK = rooms.Single(s => s.Number == 101).RoomID,
                     Date = DateTime.Parse("2019-08-30")
-                },
+                });
+            context.SaveChanges();
+
+            context.Reservations.AddOrUpdate(s => s.ReservationID,
                 new Reservation
                 {
+                    ReservationID = 2,
                     ClientFK = clients.Single(s => s.LastName == "Friedrich").ClientID,
                     RoomFK = rooms.Single(s => s.Number == 004).RoomID,
                     Date = DateTime.Parse("2019-09-28")
-                },
+                });
+            context.SaveChanges();
+
+            context.Reservations.AddOrUpdate(s => s.ReservationID,
                 new Reservation
                 {
+                    ReservationID = 3,
                     ClientFK = clients.Single(s => s.LastName == "Röhrich").ClientID,
                     RoomFK = rooms.Single(s => s.Number == 002).RoomID,
                     Date = DateTime.Parse("2019-09-03")
-                },
-            };
-            //reservations.ForEach(s => context.Reservations.Add(s));
-            //context.SaveChanges();
-            foreach (Reservation r in reservations)
-            {
-                var reservationInDataBase = context.Reservations.Where(s => s.Client.ClientID == s.ClientFK);
-                if (reservationInDataBase == null)
-                {
-                    context.Reservations.Add(r);
-                    context.SaveChanges();
-                }
-            }
+                });
+            context.SaveChanges();
         }
     }
 }
