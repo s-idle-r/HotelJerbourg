@@ -157,7 +157,9 @@ namespace HotelJerbourg.Migrations
                 {
                     ReservationID = 1,
                     ClientFK = clients.Single(s => s.LastName == "Tanner").ClientID,
+                    Client = clients.Single(s => s.LastName == "Tanner"),
                     RoomFK = rooms.Single(s => s.Number == 101).RoomID,
+                    Room = rooms.Single(s => s.Number == 101),
                     Date = DateTime.Parse("2019-08-30")
                 });
             context.SaveChanges();
@@ -167,7 +169,9 @@ namespace HotelJerbourg.Migrations
                 {
                     ReservationID = 2,
                     ClientFK = clients.Single(s => s.LastName == "Friedrich").ClientID,
+                    Client = clients.Single(s => s.LastName == "Friedrich"),
                     RoomFK = rooms.Single(s => s.Number == 004).RoomID,
+                    Room = rooms.Single(s => s.Number == 004),
                     Date = DateTime.Parse("2019-09-28")
                 });
             context.SaveChanges();
@@ -177,7 +181,9 @@ namespace HotelJerbourg.Migrations
                 {
                     ReservationID = 3,
                     ClientFK = clients.Single(s => s.LastName == "Röhrich").ClientID,
+                    Client = clients.Single(s => s.LastName == "Röhrich"),
                     RoomFK = rooms.Single(s => s.Number == 002).RoomID,
+                    Room = rooms.Single(s => s.Number == 002),
                     Date = DateTime.Parse("2019-09-03")
                 });
             context.SaveChanges();

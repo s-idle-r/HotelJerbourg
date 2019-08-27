@@ -14,6 +14,7 @@ namespace HotelJerbourg.Controllers
     public class ReservationsController : Controller
     {
         private HotelContext db = new HotelContext();
+        private ModelsVM viewModel = new ModelsVM();
 
         // GET: Reservations
         public ActionResult Index()
@@ -39,6 +40,31 @@ namespace HotelJerbourg.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
+            List<SelectListItem> roomItems = new List<SelectListItem>();
+            foreach (var r in db.Rooms.ToList())
+            {
+                SelectListItem li = new SelectListItem
+                {
+                    Value = r.Number.ToString(),
+                    Text = r.Number.ToString(),
+                };
+                roomItems.Add(li);
+            }
+            ViewBag.Rooms = roomItems;
+
+
+            List<SelectListItem> clientItems = new List<SelectListItem>();
+            foreach (var r in db.Clients.ToList())
+            {
+                SelectListItem li = new SelectListItem
+                {
+                    Value = r.LastName.ToString(),
+                    Text = r.LastName.ToString(),
+                };
+                clientItems.Add(li);
+            }
+            ViewBag.Clients = clientItems;
+
             return View();
         }
 
@@ -47,7 +73,7 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReservationID,RoomFK,ClientFK")] Reservation reservation)
+        public ActionResult Create([Bind(Include = "ReservationID,RoomFK,ClientFK,Date")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
