@@ -33,21 +33,6 @@ namespace HotelJerbourg.Migrations
             hotel.ForEach(s => context.Hotels.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
-            var rooms = new List<Room>
-            {
-                new Room{Number=001,Availability=true},
-                new Room{Number=002,Availability=true},
-                new Room{Number=003,Availability=true},
-                new Room{Number=004,Availability=true},
-                new Room{Number=005,Availability=true},
-                new Room{Number=101,Availability=true},
-                new Room{Number=102,Availability=true},
-                new Room{Number=103,Availability=true},
-                new Room{Number=104,Availability=true},
-                new Room{Number=105,Availability=true}
-            };
-            rooms.ForEach(s => context.Rooms.AddOrUpdate(p => p.Number, s));
-            context.SaveChanges();
 
             var category = new List<RoomCategory>
             {
@@ -57,6 +42,95 @@ namespace HotelJerbourg.Migrations
             };
             category.ForEach(s => context.RoomCategories.AddOrUpdate(p => p.Category, s));
             context.SaveChanges();
+
+
+            var rooms = new List<Room>
+            {
+                new Room
+                {
+                    Number = 001,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 002,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 003,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 004,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 2).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 005,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 2).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 101,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 102,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 2).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 103,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 1).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 104,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 3).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                new Room
+                {
+                    Number = 105,
+                    Availability = true,
+                    RoomCategoryFK = category.Single(s => s.RoomCategoryID == 3).RoomCategoryID,
+                    HotelFK = hotel.Single(s => s.HotelID == 1).HotelID
+                },
+                //new Room{Number=001,Availability=true,RoomCategoryFK=1},
+                //new Room{Number=002,Availability=true,RoomCategoryFK=1},
+                //new Room{Number=003,Availability=true,RoomCategoryFK=1},
+                //new Room{Number=004,Availability=true,RoomCategoryFK=2},
+                //new Room{Number=005,Availability=true,RoomCategoryFK=2},
+                //new Room{Number=101,Availability=true,RoomCategoryFK=1},
+                //new Room{Number=102,Availability=true,RoomCategoryFK=2},
+                //new Room{Number=103,Availability=true,RoomCategoryFK=1},
+                //new Room{Number=104,Availability=true,RoomCategoryFK=3},
+                //new Room{Number=105,Availability=true,RoomCategoryFK=3}
+            };
+            rooms.ForEach(s => context.Rooms.AddOrUpdate(p => p.Number, s));
+            context.SaveChanges();
+
+
 
             var clients = new List<Client>
             {

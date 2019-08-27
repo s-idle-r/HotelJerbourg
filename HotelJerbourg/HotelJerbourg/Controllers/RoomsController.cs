@@ -39,7 +39,6 @@ namespace HotelJerbourg.Controllers
         // GET: Rooms/Create
         public ActionResult Create()
         {
-            ViewBag.
             return View();
         }
 
@@ -48,10 +47,15 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoomID,Number,Availability")] Room room)
+        public ActionResult Create([Bind(Include = "RoomID,Number,Availability,RoomCategoryFK")] Room room, RoomCategory roomCategory, Hotel hotel)
         {
             if (ModelState.IsValid)
             {
+                room.RoomCategoryFK = 1;
+                room.HotelFK = 1;
+                room.Hotel = db.Hotels.Find(room.HotelFK);
+                room.RoomCategories = db.RoomCategories.Find(room.RoomCategoryFK);
+
                 db.Rooms.Add(room);
                 db.SaveChanges();
                 return RedirectToAction("Index");

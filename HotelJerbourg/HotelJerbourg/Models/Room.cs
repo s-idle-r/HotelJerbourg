@@ -10,8 +10,8 @@ namespace HotelJerbourg.Models
         public int RoomID { get; set; }
         public int Number { get; set; }
         public bool Availability { get; set; }
-        //public int HotelFK { get; set; }
-        //public int RoomCategoryFK { get; set; }
+        public int HotelFK { get; set; }
+        public int RoomCategoryFK { get; set; }
 
         public Room()
         {

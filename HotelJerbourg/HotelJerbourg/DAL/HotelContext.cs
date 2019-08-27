@@ -24,13 +24,13 @@ namespace HotelJerbourg.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Room>()
-                .HasOptional(s => s.RoomCategories).WithMany(s => s.Rooms)
-                .Map(t => t.MapKey("RoomCategoryFK"));
+        //    modelBuilder.Entity<Room>()
+        //        .HasOptional(s => s.RoomCategories).WithMany(s => s.Rooms)
+        //        .Map(t => t.MapKey("RoomCategoryFK"));
 
-            modelBuilder.Entity<Room>()
-                .HasOptional(s => s.Hotel).WithMany(s => s.Rooms)
-                .Map(t => t.MapKey("HotelFK"));
+        //    modelBuilder.Entity<Room>()
+        //        .HasOptional(s => s.Hotel).WithMany(s => s.Rooms)
+        //        .Map(t => t.MapKey("HotelFK"));
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
