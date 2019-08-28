@@ -45,7 +45,7 @@ namespace HotelJerbourg.Controllers
             {
                 SelectListItem li = new SelectListItem
                 {
-                    Value = r.Number.ToString(),
+                    Value = r.RoomID.ToString(),
                     Text = r.Number.ToString(),
                 };
                 roomItems.Add(li);
@@ -58,7 +58,7 @@ namespace HotelJerbourg.Controllers
             {
                 SelectListItem li = new SelectListItem
                 {
-                    Value = r.LastName.ToString(),
+                    Value = r.ClientID.ToString(),
                     Text = r.LastName.ToString(),
                 };
                 clientItems.Add(li);
@@ -73,10 +73,22 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReservationID,RoomFK,ClientFK,Date")] Reservation reservation)
+        public ActionResult Create([Bind(Include = "ReservationID,RoomFK,ClientFK,Date")] Reservation reservation, FormCollection form)
         {
+            //string roomID = Request.Form["Rooms"];
+            int roomID = Int32.Parse(Request.Form["Rooms"]);
+            //string clientID = Request.Form["Clients"];
+            int clientID = Int32.Parse(Request.Form["Clients"]);
+            //string date = Request.Form["Date"];
+            DateTime date = DateTime.Parse(Request.Form["Date"]);
+
             if (ModelState.IsValid)
             {
+                reservation.Room = db.Rooms.Find(roomID);
+                reservation.RoomFK = roomID;
+                reservation.Client = db.Clients.Find(clientID);
+                reservation.ClientFK = clientID;
+
                 db.Reservations.Add(reservation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
