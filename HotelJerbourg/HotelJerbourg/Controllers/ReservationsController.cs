@@ -40,29 +40,9 @@ namespace HotelJerbourg.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
-            List<SelectListItem> roomItems = new List<SelectListItem>();
-            foreach (var r in db.Rooms.ToList())
-            {
-                SelectListItem li = new SelectListItem
-                {
-                    Value = r.RoomID.ToString(),
-                    Text = r.Number.ToString(),
-                };
-                roomItems.Add(li);
-            }
+            var roomItems = GetAvailableRooms();
+            var clientItems = GetClients();
             ViewBag.Rooms = roomItems;
-
-
-            List<SelectListItem> clientItems = new List<SelectListItem>();
-            foreach (var r in db.Clients.ToList())
-            {
-                SelectListItem li = new SelectListItem
-                {
-                    Value = r.ClientID.ToString(),
-                    Text = r.LastName.ToString(),
-                };
-                clientItems.Add(li);
-            }
             ViewBag.Clients = clientItems;
 
             return View();
@@ -75,11 +55,8 @@ namespace HotelJerbourg.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReservationID,RoomFK,ClientFK,Date")] Reservation reservation, FormCollection form)
         {
-            //string roomID = Request.Form["Rooms"];
             int roomID = Int32.Parse(Request.Form["Rooms"]);
-            //string clientID = Request.Form["Clients"];
             int clientID = Int32.Parse(Request.Form["Clients"]);
-            //string date = Request.Form["Date"];
             DateTime date = DateTime.Parse(Request.Form["Date"]);
 
             if (ModelState.IsValid)
@@ -89,11 +66,9 @@ namespace HotelJerbourg.Controllers
                 reservation.Client = db.Clients.Find(clientID);
                 reservation.ClientFK = clientID;
 
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
+                db.SaveChanges();                
                 return RedirectToAction("Index");
             }
-
             return View(reservation);
         }
 
@@ -109,6 +84,12 @@ namespace HotelJerbourg.Controllers
             {
                 return HttpNotFound();
             }
+
+            var roomItems = GetAvailableRooms();
+            var clientItems = GetClients();
+            ViewBag.Rooms = roomItems;
+            ViewBag.Clients = clientItems;
+
             return View(reservation);
         }
 
@@ -117,12 +98,29 @@ namespace HotelJerbourg.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReservationID,RoomFK,ClientFK")] Reservation reservation)
+        public ActionResult Edit([Bind(Include = "ReservationID,RoomFK,ClientFK,Date")] Reservation reservation, FormContext form)
         {
+            int roomID = Int32.Parse(Request.Form["Rooms"]);
+            int clientID = Int32.Parse(Request.Form["Clients"]);
+            DateTime date = DateTime.Parse(Request.Form["Date"]);
+
             if (ModelState.IsValid)
             {
+                reservation.Room = db.Rooms.Find(roomID);
+                reservation.RoomFK = roomID;
+                reservation.Client = db.Clients.Find(clientID);
+                reservation.ClientFK = clientID;
+
                 db.Entry(reservation).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    throw new Exception();
+                }
                 return RedirectToAction("Index");
             }
             return View(reservation);
@@ -161,6 +159,39 @@ namespace HotelJerbourg.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public List<SelectListItem> GetAvailableRooms()
+        {
+            List<SelectListItem> roomItems = new List<SelectListItem>();
+            foreach (var r in db.Rooms.ToList())
+            {
+                if (r.Availability)
+                {
+                    SelectListItem li = new SelectListItem
+                    {
+                        Value = r.RoomID.ToString(),
+                        Text = r.Number.ToString(),
+                    };
+                    roomItems.Add(li);
+                }
+            }
+            return roomItems;
+        }
+
+        public List<SelectListItem> GetClients()
+        {
+            List<SelectListItem> clientItems = new List<SelectListItem>();
+            foreach (var c in db.Clients.ToList())
+            {
+                SelectListItem li = new SelectListItem
+                {
+                    Value = c.ClientID.ToString(),
+                    Text = c.LastName.ToString(),
+                };
+                clientItems.Add(li);
+            }
+            return clientItems;
         }
     }
 }
