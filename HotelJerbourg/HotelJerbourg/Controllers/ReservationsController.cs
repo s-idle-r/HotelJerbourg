@@ -59,6 +59,19 @@ namespace HotelJerbourg.Controllers
             int clientID = Int32.Parse(Request.Form["Clients"]);
             DateTime date = DateTime.Parse(Request.Form["Date"]);
 
+            foreach (var r in db.Reservations.ToList())
+            {
+                if (date == r.Date && roomID == r.Room.RoomID)
+                {
+                    var roomItems = GetAvailableRooms();
+                    var clientItems = GetClients();
+                    ViewBag.Rooms = roomItems;
+                    ViewBag.Clients = clientItems;
+                    ViewBag.Error = "Room not available at selected date";
+                    return View();
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 reservation.Room = db.Rooms.Find(roomID);
@@ -66,6 +79,7 @@ namespace HotelJerbourg.Controllers
                 reservation.Client = db.Clients.Find(clientID);
                 reservation.ClientFK = clientID;
 
+                db.Reservations.Add(reservation);
                 db.SaveChanges();                
                 return RedirectToAction("Index");
             }
@@ -112,15 +126,7 @@ namespace HotelJerbourg.Controllers
                 reservation.ClientFK = clientID;
 
                 db.Entry(reservation).State = EntityState.Modified;
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                    throw new Exception();
-                }
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(reservation);
