@@ -12,7 +12,7 @@ namespace HotelJerbourg.DAL
     {
         public HotelContext() : base("HotelJerbourg")
         {
-            //Database.SetInitializer(new HotelDBInitializer());
+
         }
 
         public DbSet<Hotel> Hotels { get; set; }
@@ -33,16 +33,6 @@ namespace HotelJerbourg.DAL
         //        .Map(t => t.MapKey("HotelFK"));
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //modelBuilder.Entity<Course>()
-            //    .HasMany(c => c.Instructors).WithMany(i => i.Courses)
-            //    .Map(t => t.MapLeftKey("CourseID")
-            //        .MapRightKey("InstructorID")
-            //        .ToTable("CourseInstructor"));
-
-            //modelBuilder.Entity<Department>().MapToStoredProcedures();
         }
     }
 }
