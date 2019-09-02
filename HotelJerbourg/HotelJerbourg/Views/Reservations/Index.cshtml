@@ -48,3 +48,28 @@
 }
 
 </table>
+
+<div>
+    <div>
+        <h4>Category Statistics (count)</h4>
+        <p>Standard: @ViewBag.Standard</p>
+        <p>Premium: @ViewBag.Premium</p>
+        <p>Suite: @ViewBag.Suite</p>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Reservations</th>
+        </tr>
+        @foreach (var c in ViewBag.Clients)
+        {
+            <tr>
+                <td>@c.Client.LastName</td>
+                <td>@c.Client.Surname</td>
+                <td>@c.Client.Reservations.Count</td>
+            </tr>
+        }
+    </table>
+</div>

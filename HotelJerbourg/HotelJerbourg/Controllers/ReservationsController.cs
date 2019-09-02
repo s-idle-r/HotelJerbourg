@@ -19,6 +19,11 @@ namespace HotelJerbourg.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
+            ViewBag.Standard = db.Reservations.Where(r => (r.Client.ClientID != 0) && (r.Room.RoomCategories.Category == "Standard")).Count();
+            ViewBag.Premium = db.Reservations.Where(r => (r.Client.ClientID != 0) && (r.Room.RoomCategories.Category == "Premium")).Count();
+            ViewBag.Suite = db.Reservations.Where(r => (r.Client.ClientID != 0) && (r.Room.RoomCategories.Category == "Suite")).Count();
+            ViewBag.Clients = db.Reservations.Where(r => r.Client.Reservations.Count >= 1).ToList();
+
             return View(db.Reservations.ToList());
         }
 
